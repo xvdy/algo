@@ -1,4 +1,4 @@
-// todo next “lizhonghao”
+// todo next “lizhonghao-2016-09-7”
 public class NextPermutation {
 
 	public static void main(String[] args) {
