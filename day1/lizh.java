@@ -1,4 +1,4 @@
-// todo next
+// todo next “lizhonghao”
 public class NextPermutation {
 
 	public static void main(String[] args) {
@@ -19,8 +19,9 @@ public class NextPermutation {
 		}
 		if(i==0){
 			reverse(numbers, 0, numbers.length-1);
+			return ;
 		}
-		else {
+		
 		//找出大于numbers[i-1]最后一个数，，这个数是numbers[j]
 		int j=numbers.length-1;
 		while(j>=i && numbers[j]<numbers[i-1]){
@@ -34,7 +35,7 @@ public class NextPermutation {
 		
 		//将下标从i至末尾的数逆序
 		reverse(numbers,i,numbers.length-1);
-		}
+		
 	}
 	
 	public static void reverse(int[] numbers,int start,int end){
@@ -48,3 +49,4 @@ public class NextPermutation {
 	}
 	
 }
+
