@@ -84,6 +84,36 @@ def post_visit(node):
     node.echo()
 
 
+def get_depth(node):
+    if not node:
+        return 0
+
+    left_depth = get_depth(node.left)
+    right_depth = get_depth(node.right)
+
+    return right_depth + 1 if right_depth > left_depth else left_depth + 1
+
+
+def get_node_count(node):
+    if not node:
+        return 0
+    return get_node_count(node.left) + get_node_count(node.right) + 1
+
+
+def search(node, value):
+    if not node:
+        return None
+    if node.value == value:
+        return node
+    left_search_result = search(node.left, value)
+    if left_search_result:
+        return left_search_result
+    else:
+        return search(node.right, value)
+
+
+
+
 root = prepare_date()
 
 print("pre")
@@ -94,3 +124,13 @@ inorder_visit(root)
 # inorder_no_recruse(root)
 print("post")
 post_visit(root)
+
+print("depth")
+print(get_depth(root))
+
+print("get node count")
+print(get_node_count(root))
+
+print("search")
+
+print(search(root, 8).value)
