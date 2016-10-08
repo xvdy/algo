@@ -8,7 +8,7 @@ def anagrams(strs):
     result = []
     for index, item in enumerate(sorted_strs):
         same_items = [sorted_str for sorted_str in sorted_strs if sorted_str == item]
-        if len(same_items) > 2:
+        if len(same_items) > 1:
             result.append(strs[index])
 
     return result
