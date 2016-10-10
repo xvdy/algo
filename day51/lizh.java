@@ -1,22 +1,24 @@
-// todo next “lizhonghao-2016-10-7”
+// todo next “lizhonghao-2016-10-09”
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
-public class LevelOrderTraversalFromLeafToRoot {
+
+public class LevelOrderTraversal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        //          3
-		//         /  \
-		//        9   20 
-		//           /  \
-		//          15   7
-			TreeNode root=new TreeNode(3);
-			root.left=new TreeNode(9);
-			root.right=new TreeNode(20);
-			root.right.left=new TreeNode(15);
-			root.right.right=new TreeNode(7);
-
-           System.out.println("层序遍历的结果为："+levelOrderTraversalFromLeafToRoot(root));
+		//				3
+		//             /  \
+		//            9   20
+		//               /  \
+		//             15    7
+		TreeNode root=new TreeNode(3);
+		root.left=new TreeNode(9);
+		root.right=new TreeNode(20);
+		root.right.left=new TreeNode(15);
+		root.right.right=new TreeNode(7);
+		
+		System.out.println("层序遍历的结果为："+levelOrderTraversal(root));
 	}
 	
 	public static class TreeNode{
@@ -28,8 +30,9 @@ public class LevelOrderTraversalFromLeafToRoot {
 		}
 	}
 	
-	//和上一题的思路一样，只在处理结果的时候处理一下就可以了
-	public static ArrayList<ArrayList<Integer>> levelOrderTraversalFromLeafToRoot(TreeNode root){
+	//每一层结点全部在插入到levelResult后，队列queue都会变为空，可以设置一个计数在每一层插入结束后加1,
+	//将计数为偶数的层levelResult逆序就可以
+	public static ArrayList<ArrayList<Integer>> levelOrderTraversal(TreeNode root){
 		ArrayList<ArrayList<Integer>> result=new ArrayList<ArrayList<Integer>>();
 		if(root==null){
 			return result;
@@ -40,11 +43,20 @@ public class LevelOrderTraversalFromLeafToRoot {
 		int curLevelCount=1;
 		int nextLevelCount=0;
 		queue.add(root);
+		int flag=0;
 		
 		while(!queue.isEmpty()){
 			TreeNode cur=queue.poll();
 			curLevelCount--;
 			levelResult.add(cur.val);
+			
+			//将计数为偶数的层levelResult逆序
+			if(queue.isEmpty()){
+				flag++;
+			}
+			if(flag%2==0){
+				Collections.reverse(levelResult);
+			}
 			
 			if(cur.left!=null){
 				nextLevelCount++;
@@ -59,7 +71,7 @@ public class LevelOrderTraversalFromLeafToRoot {
 			if(curLevelCount==0){
 				curLevelCount=nextLevelCount;
 				nextLevelCount=0;
-				result.add(0,levelResult);
+				result.add(levelResult);
 				levelResult=new ArrayList<Integer>();
 			}
 		}
