@@ -11,4 +11,9 @@ class Queue:
 
     def dequeue(self):
         if self.container:
-            return self.container[0]
+            queue_head = self.container[0]
+            self.container = self.container[1:]
+            return queue_head
+
+    def __nonzero__(self):
+        return len(self.container) > 0
