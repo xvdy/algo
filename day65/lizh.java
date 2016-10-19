@@ -31,14 +31,14 @@ public class MinumDeepthOfBinaryTree {
 	//递归方式
 	public static int getMin(TreeNode root){
 		if(root==null){
-			return Integer.MIN_VALUE;
+			return Integer.MAX_VALUE;
 		}
 		
-		if(root.left==null || root.right==null){
+		if(root.left==null && root.right==null){
 			return 1;
 		}
 		
-		return Math.min(getMin(root.right),getMin(root.right))+1;
+		return Math.min(getMin(root.left),getMin(root.right))+1;
 	}
 	
 	public static int getMinDeepth(TreeNode root){
