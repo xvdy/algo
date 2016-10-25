@@ -56,7 +56,7 @@ public class PathSumTwo {
 		if(root.right!=null){
 			l.add(root.right.val);
 			dfs(root.right, sum-root.right.val, result, l);
-			l.add(l.size()-1);
+			l.remove(l.size()-1);
 		}
 	}
 }
