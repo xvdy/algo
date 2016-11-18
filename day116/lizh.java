@@ -1,10 +1,9 @@
-// todo next “lizhonghao-2016-09-7”
+// todo next “lizhonghao-2016-11-18”
 public class DistinctSequence {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println(distinctSequenceNumber("rabbbit", "rabbit"));
-
 	}
 	
 	public static int distinctSequenceNumber(String S,String T){
