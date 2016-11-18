@@ -1,6 +1,5 @@
 // todo next “lizhonghao-2016-11-04”
 import java.util.ArrayList;
-
 public class PalindromePartitioning {
 
 	public static void main(String[] args) {
